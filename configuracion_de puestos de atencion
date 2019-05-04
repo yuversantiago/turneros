@@ -1,0 +1,34 @@
+
+public class puestos_atencion {
+    String nombre;
+    int disponible;
+puestos_atencion(){
+nombre=" ";
+disponible=0;
+}
+puestos_atencion(String n,int m){
+    nombre=n;
+    disponible=m;
+    
+}
+    puestos_atencion n[]=new puestos_atencion[10];
+    
+    
+    void crear_puestos(){
+    for(int i=0;i<10;i++){
+    n[i].disponible=0;
+    }
+    System.out.println("PUESTOS DE ATENCION:\n");
+    for(int i=0;i<10;i++){
+        if(n[i].disponible==0){
+        System.out.println(i+"->"+ "NO ACTIVO ");
+        }else{
+        System.out.println(i+"->"+ "ACTIVO ");
+        }
+    }
+    
+    }//fin de la funcion
+}
+
+    
+
