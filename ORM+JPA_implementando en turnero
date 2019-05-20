@@ -1,6 +1,13 @@
 ¿Qué es un ORM?
 
-Object-Relational mapping, o lo que es lo mismo, mapeo de objeto-relacional, es un modelo de programación que consiste en la transformación de las tablas de una base de datos, en una serie de entidades que simplifiquen las tareas básicas de acceso a los datos para el programador en otras palabras ORM te permite convertir los datos de tus objectos en un formato correcto para poder guardar la información en una base de datos (mapeo) creándose una base de datos virtual donde los datos que se encuentran en nuestra aplicación, quedan vinculados a la base de datos (persistencia).
+Object-Relational mapping, o lo que es lo mismo, mapeo de objeto-relacional,
+es un modelo de programación 
+que consiste en la transformación de las tablas de una 
+base de datos, en una serie de entidades que simplifiquen las 
+tareas básicas de acceso a los datos para el programador en otras palabras ORM 
+te permite convertir los datos de tus objectos en un formato correcto para poder guardar 
+la información en una base de datos (mapeo) creándose una base de datos virtual 
+donde los datos que se encuentran en nuestra aplicación, quedan vinculados a la base de datos (persistencia).
 
 Ventajas y desventajas de un ORM
 
@@ -13,18 +20,27 @@ o	Seguridad de la capa de acceso a datos contra ataques.
 
 o	En entornos con gran carga poner una capa más en el proceso puede mermar el rendimiento.
 ORMs más utilizados
-Casi todos los lenguajes de alto nivel actualmente disponen de alguna solución de este tipo, una de las más conocidas es Hibernate para JAVA, pero existen muchas más:
+Casi todos los lenguajes de alto nivel actualmente disponen de alguna solución
+de este tipo, una de las más conocidas es Hibernate para JAVA, pero existen muchas más:
 •	Java => Hibernate, iBatis, Ebean, etc..
 •	.NET=> Entity Framework, nHibernate, etc..
 •	PHP=> Doctrine, Propel, ROcks, Torpor, etc..
 ¿Qué es JPA?
-Java Persistence API, más conocida por sus siglas JPA, es la API de persistencia desarrollada para la plataforma Java EE. Es un framework del lenguaje de programación Java que maneja datos relacionales en aplicaciones usando la Plataforma Java en sus ediciones Standard (Java SE) y Enterprise (Java EE). JPA es la propuesta estándar que ofrece Java para implementar un Framework Object Relational Mapping (ORM), que permite interactuar con la base de datos por medio de objetos, de esta forma, JPA es el encargado de convertir los objetos Java en instrucciones para el Manejador de Base de Datos (MDB).
+Java Persistence API, más conocida por sus siglas JPA, 
+es la API de persistencia desarrollada para la plataforma Java EE.
+Es un framework del lenguaje de programación Java que maneja datos relacionales 
+en aplicaciones usando la Plataforma Java en sus ediciones Standard (Java SE) y
+Enterprise (Java EE). JPA es la propuesta estándar que ofrece Java para implementar 
+un Framework Object Relational Mapping (ORM), que permite interactuar con la base de
+datos por medio de objetos, de esta forma, JPA es el encargado de convertir los objetos 
+Java en instrucciones para el Manejador de Base de Datos (MDB).
 
 PROYECTO
 
 A continuación explicare una parte del programa TURNERO  realizado en java haciendo uso de HIBERNATE.
 
-Los atributos que tendrá esta serán un nombre, un correo, y un número telefónico. Además, por regla, necesitamos un atributo que funcione como identificador para cada una de las entidades.
+Los atributos que tendrá esta serán un nombre, un correo,
+y un número telefónico. Además, por regla, necesitamos un atributo que funcione como identificador para cada una de las entidades.
 La clase asesor queda de la siguiente forma.
 
 public class asesor implements Serializable
@@ -102,7 +118,14 @@ A continuación haremos uso de un documento en java xml y lo llamaremos asesor.h
     </class>
 </hibernate-mapping>
 
-Con esto indicamos que las entidades de la clase "asesor" serán almacenadas en la tabla "informacion". Ahora debemos indicar cuál de los elementos de la clase entidad es el identificador. Este identificador será mapeado con la llave primaria de la tabla, además como nosotros no manejaremos el valor del identificador, le indicamos a Hibernate cómo queremos que este valor sea generado (la estrategia de generación). Para esto usamos el elemento "<id>", indicando el nombre del atributo de la clase entidad que representa el identificador (que en este caso también se llama "id" ^-^). Opcionalmente en este elemento (como en el resto de los elementos de mapeo de propiedades) podemos indicar con qué columna queremos que se mapee usando el atributo "column":
+Con esto indicamos que las entidades de la clase "asesor" serán almacenadas en la tabla "informacion".
+Ahora debemos indicar cuál de los elementos de la clase entidad es el identificador. Este identificador
+será mapeado con la llave primaria de la tabla, además como nosotros no manejaremos el valor del identificador, 
+le indicamos a Hibernate cómo queremos que este valor sea generado (la estrategia de generación). 
+Para esto usamos el elemento "<id>", indicando el nombre del atributo de la clase entidad que representa
+el identificador (que en este caso también se llama "id" ^-^). Opcionalmente en este elemento 
+(como en el resto de los elementos de mapeo de propiedades) podemos indicar con qué columna queremos que 
+se mapee usando el atributo "column":
 
 <hibernate-mapping>
     <class name="hibernatenormal.asesor" table="INFORMACION">
@@ -111,7 +134,11 @@ Con esto indicamos que las entidades de la clase "asesor" serán almacenadas en 
         </id>
     </class>
 </hibernate-mapping>
-Para terminar con el mapeo incluimos las declaraciones para el resto de las propiedades persistentes (las que queremos que sean almacenadas) de la clase entidad ("nombre", "email", y "telefono") usando el elemento "<property>" en el cual indicamos el nombre de la propiedad como aparece en la clase entidad y, opcionalmente, el tipo de la propiedad y la columna con la que será mapeada usando los atributos "type" y "column" respectivamente:
+Para terminar con el mapeo incluimos las declaraciones para el resto
+de las propiedades persistentes (las que queremos que sean almacenadas) de la clase entidad
+("nombre", "email", y "telefono") usando el elemento "<property>" en el cual indicamos el nombre 
+de la propiedad como aparece en la clase entidad y, opcionalmente, el tipo de la propiedad y 
+la columna con la que será mapeada usando los atributos "type" y "column" respectivamente:
 <hibernate-mapping>
     <class name="hibernatenormal.asesor" table="informacion">
         <id name="id" column="ID">
@@ -168,17 +195,32 @@ Crearemos otro archivo llamado hibernate.cfg.xml
   </session-factory>
 </hibernate-configuration>
 
-Esa es toda la configuración que debemos hacer para trabajar con JPA haciendo uso de Hibernate. A continuación, veremos cómo guardar datos y como eliminarlos de nuestra clase asesor.
+Esa es toda la configuración que debemos hacer para trabajar con JPA haciendo uso de Hibernate.
+A continuación, veremos cómo guardar datos y como eliminarlos de nuestra clase asesor.
 
 
-Lo primero que haremos es crear una clase ayudante o de utilidad llamada "HibernateUtil", que se hará cargo de inicializar y hacer el acceso al "org.hibernate.SessionFactory" (el objeto encargado de gestionar las sesiones de conexión a la base de datos que configuramos en el archivo "hibernate.cfg.xml") más conveniente.
+Lo primero que haremos es crear una clase ayudante o de utilidad llamada "HibernateUtil",
+que se hará cargo de inicializar y hacer el acceso al "org.hibernate.SessionFactory"
+(el objeto encargado de gestionar las sesiones de conexión a la base de datos que 
+configuramos en el archivo "hibernate.cfg.xml") más conveniente.
 
-Dentro de esta clase declaramos un atributo static de tipo "SessionFactory", así nos aseguraremos de que solo existe una instancia en la aplicación.
+Dentro de esta clase declaramos un atributo static de tipo "SessionFactory",
+así nos aseguraremos de que solo existe una instancia en la aplicación.
 
 private static final SessionFactory sessionFactory;
 
-Después usamos un bloque de inicialización estático para inicializar esta variable en el momento en el que la clase sea cargada en la JVM.
-Para realizar esta inicialización lo primero que se necesita es una instancia de la clase "org.hibernate.cfg.Configuration" que permite a la aplicación especificar las propiedades y documentos de mapeo que se usarán (es aquí donde indicamos todo si no queremos usar un archivo XML o de propiedades). Si usamos el método "configure()" que no recibe parámetros entonces Hibernate busca el archivo "hibernate.cfg.xml" que creamos anteriormente. Una vez que tenemos este objeto, entonces podemos inicializar la instancia de "SessionFactory" con su método "buildSessionFactory()". Además como este proceso puede lanzar "org.hibernate.HibernateException" (que extiende de "RuntimeException") la cachamos y lanzamos como un "ExceptionInInitializarError" (que es lo único que puede lanzarse desde un bloque de inicialización). El bloque de inicialización queda de la siguiente forma:
+Después usamos un bloque de inicialización estático para inicializar esta 
+variable en el momento en el que la clase sea cargada en la JVM.
+Para realizar esta inicialización lo primero que se necesita es una 
+instancia de la clase "org.hibernate.cfg.Configuration" que permite
+a la aplicación especificar las propiedades y documentos de mapeo que se usarán 
+(es aquí donde indicamos todo si no queremos usar un archivo XML o de propiedades). 
+Si usamos el método "configure()" que no recibe parámetros entonces Hibernate
+busca el archivo "hibernate.cfg.xml" que creamos anteriormente. Una vez que tenemos
+este objeto, entonces podemos inicializar la instancia de "SessionFactory" con su método
+"buildSessionFactory()". Además como este proceso puede lanzar "org.hibernate.HibernateException"
+(que extiende de "RuntimeException") la cachamos y lanzamos como un "ExceptionInInitializarError" 
+(que es lo único que puede lanzarse desde un bloque de inicialización). El bloque de inicialización queda de la siguiente forma:
 static
 {
     try 
@@ -226,11 +268,17 @@ public class HibernateUtil
 }
 
 
-Bien ha llegado el momento, ahora escribiremos una clase DAO (no seguiremos el patrón al pie de la letra, es solo para mostrar cómo trabajar con Hibernate) que nos permitirá realizar operaciones de base de datos.
-Creamos una clase llamada "asesorDAO" y agregamos dos atributos, uno llamado "sesion" de tipo "org.hibernate.Session", y otro llamado "tx" de tipo "org.hibernate.Transaction".
+Bien ha llegado el momento, ahora escribiremos una clase DAO 
+(no seguiremos el patrón al pie de la letra, es solo para mostrar cómo trabajar con Hibernate)
+que nos permitirá realizar operaciones de base de datos.
+Creamos una clase llamada "asesorDAO" y agregamos dos atributos, uno llamado "sesion" de tipo "org.hibernate.Session", 
+y otro llamado "tx" de tipo "org.hibernate.Transaction".
 private Session sesion;
 private Transaction tx;
-Estos atributos nos servirán para mantener la referencia a la sesión a base de datos, y a la transacción actual, respectivamente. Ahora agregaremos dos métodos de utilidad. El primero nos ayudará a iniciar una sesión y una transacción en la base de datos. Llamaremos a este método "iniciaOperacion", y la implementación es la siguiente:
+Estos atributos nos servirán para mantener la referencia a la sesión a base de datos, 
+y a la transacción actual, respectivamente. Ahora agregaremos dos métodos de utilidad.
+El primero nos ayudará a iniciar una sesión y una transacción en la base de datos.
+Llamaremos a este método "iniciaOperacion", y la implementación es la siguiente:
 
 private void iniciaOperacion() throws HibernateException
 {
@@ -238,9 +286,15 @@ private void iniciaOperacion() throws HibernateException
     tx = sesion.beginTransaction();
 }
 
-En el método anterior obtenemos una referencia a "SessionFactory" usando nuestra clase de utilidad "HibernateUtil". Una vez que tenemos la "SessionFactory" creamos una conexión a la base de datos e iniciamos una nueva sesión con el método "openSession()". Una vez teniendo la sesión iniciamos una nueva transacción y obtenemos una referencia a ella con "beginTransaction()".
+En el método anterior obtenemos una referencia a "SessionFactory"
+usando nuestra clase de utilidad "HibernateUtil". Una vez que tenemos la "SessionFactory" 
+creamos una conexión a la base de datos e iniciamos una nueva sesión con el método "openSession()". 
+Una vez teniendo la sesión iniciamos una nueva transacción y obtenemos una referencia a ella con "beginTransaction()".
 
-Ahora el segundo método de utilidad (llamado "manejaExcepcion") nos ayudará a manejar las cosas en caso de que ocurra una excepción. Si esto pasa queremos que la transacción que estamos ejecutando se deshaga y se relance la excepción (o podríamos lanzar una propia). Por lo que el método queda así:
+Ahora el segundo método de utilidad (llamado "manejaExcepcion")
+nos ayudará a manejar las cosas en caso de que ocurra una excepción.
+Si esto pasa queremos que la transacción que estamos ejecutando se deshaga y se relance la excepción 
+(o podríamos lanzar una propia). Por lo que el método queda así:
 
 
 private void manejaExcepcion(HibernateException he) throws HibernateException
@@ -249,7 +303,13 @@ private void manejaExcepcion(HibernateException he) throws HibernateException
     throw new HibernateException("Ocurrió un error en la capa de acceso a datos", he);
 }
 
-Ahora crearemos los métodos que nos permitirán realizar las tareas de persistencia de una entidad "Contacto", conocidas en lenguaje de base de datos como CRUD: guardarla, eliminarla, un entidad "asesor". Afortunadamente Hibernate hace que esto sea fácil ya que proporciona métodos para cada una de estas tareas. Primero veamos como guardar un objeto "Contacto". Para esto Hibernate proporciona el método "save" en el objeto de tipo "org.hibernate.Session", que se encarga de generar el "INSERT" apropiado para la entidad que estamos tratando de guardar. El método "guardaInformacion" queda de la siguiente forma:
+Ahora crearemos los métodos que nos permitirán realizar las tareas de persistencia de una entidad "Contacto", 
+conocidas en lenguaje de base de datos como CRUD: guardarla, eliminarla, un entidad "asesor".
+Afortunadamente Hibernate hace que esto sea fácil ya que proporciona métodos para cada una de estas tareas. 
+Primero veamos como guardar un objeto "Contacto".
+Para esto Hibernate proporciona el método "save" en el objeto de tipo "org.hibernate.Session", 
+que se encarga de generar el "INSERT" apropiado para la entidad que estamos tratando de guardar. 
+El método "guardaInformacion" queda de la siguiente forma:
 public long guardaInformacion(asesor Asesor)
 { 
     long id = 0;  
@@ -288,7 +348,9 @@ public void eliminaAsesor(asesor Asesor) throws HibernateException
     } 
 }
 
-Finalmente veremos el método "obtenListaasesor" que recupera todos los asesores que estén guardados en la base de datos. Como en este caso regresaremos una lista de elementos deberemos crear una consulta. Cuando tenemos que crear una consulta con JDBC lo hacemos en SQL, sin embargo con Hibernate tenemos varias opciones:
+Finalmente veremos el método "obtenListaasesor" que recupera todos los asesores que estén guardados en la base de datos.
+Como en este caso regresaremos una lista de elementos deberemos crear una consulta. 
+Cuando tenemos que crear una consulta con JDBC lo hacemos en SQL, sin embargo con Hibernate tenemos varias opciones:
 
 
 •	Usar una query en SQL nativo.
@@ -312,7 +374,8 @@ public List<asesor> obtenListaasesor() throws HibernateException
     return listaasesor; 
 }
 
-Eso es todo, nuestra consulta para recuperar todos los Contactos que tenemos en la base de datos solo debemos usar la clausula "FROM asesor".
+Eso es todo, nuestra consulta para recuperar todos los Contactos que tenemos 
+en la base de datos solo debemos usar la clausula "FROM asesor".
 Bien, eso es todo. La clase "asesorDAO" queda de la siguiente forma:
 public long guardaInformacion(asesor Asesor)
 { 
