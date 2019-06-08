@@ -1,0 +1,146 @@
+# turneros
+package modelo;
+
+public class asesor {
+    private asesor [] almacen=new asesor[10];
+    private String nombre;
+    private String apellido;
+    private int id;
+  private int estado;
+     private String ser;
+ private String ser2;
+  private String ser3;
+    public asesor(String nombre, String apellido, int id, String ser, int estado) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.id = id;
+        this.ser=ser;
+        this.estado=estado;
+    }
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
+
+    public String getSer() {
+        return ser;
+    }
+
+    public void setSer(String ser) {
+        this.ser = ser;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+          
+   
+   public boolean agregar(asesor guardar) 
+ {
+  for (int i = 0; i < almacen.length; i++) 
+  {
+   if (almacen[i] == null)
+   {
+    almacen[i] = guardar;
+    return true;
+   }
+  }
+  return false;
+ }
+   
+  
+   public boolean eliminar(int id)
+ {
+  for (int i = 0; i < almacen.length; i++) 
+  {
+   if (almacen[i] != null)
+   {
+    if (almacen[i].getId()==id)
+    {
+     almacen[i] = null;
+     return true;
+    }
+   }
+  }
+  return false;
+ }
+  
+    public asesor buscar(int id)
+ {
+  for (int i = 0; i < almacen.length; i++) 
+  {
+   if (almacen[i] != null)
+   {
+    if (almacen[i].getId()==id)
+    {
+            return almacen[i];
+    } else {
+    
+    }
+   }
+  }
+  return null;
+ }
+    
+    
+    
+        public asesor activarestado(int id)
+ {
+  for (int i = 0; i < almacen.length; i++) 
+  {
+   if (almacen[i] != null)
+   {
+    if (almacen[i].getId()==id)
+    {
+        almacen[i].setEstado(1);
+            return almacen[i];
+    } else {
+    
+    }
+   }
+  }
+  return null;
+ }
+            public boolean suspenderestado(int id)
+ {
+  for (int i = 0; i < almacen.length; i++) 
+  {
+   if (almacen[i] != null)
+   {
+    if (almacen[i].getId()==id)
+    {
+     almacen[i].setEstado(0);
+     
+     return true;
+    }
+   }
+  }
+  return false;
+ }
+    
+}
