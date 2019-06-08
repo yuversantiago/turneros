@@ -1,0 +1,45 @@
+# turneros
+
+package control;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import modelo.servicio;
+import vista.vista2;
+import vista.vista_servicio;
+import modelo.servicio;
+
+/**
+ *
+ * @author yuver
+ */
+public class control implements ActionListener {
+    servicio llamado=new servicio();
+  private vista_servicio ok;
+ 
+    private servicio bueno;
+    public control(vista_servicio ok, servicio bueno) {
+        this.ok = ok;
+        this.bueno = bueno;
+   this.ok.ingresa.addActionListener(this);
+    }
+
+
+   
+  
+    
+    public void inniciar(){
+        //ok.setTitle("REGISTAR SERVICIO");
+        ok.setLocationRelativeTo(null);
+    
+    }
+ 
+    public void actionPerformed(ActionEvent e){
+     
+        bueno.setNombre(ok.txtRegistro_ser.getText());
+
+    
+    }
+
+   
+}
